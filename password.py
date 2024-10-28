@@ -1,7 +1,4 @@
-# you can write to stdout for debugging purposes, e.g.
-# print("this is a debug message")
-
-
+# checks if password is longer than 10 cahracters
 def length_check(password: str) -> bool:
     if len(password) > 10:
         return True
@@ -9,6 +6,7 @@ def length_check(password: str) -> bool:
         return False
 
 
+# checks if password contains a lowercase, uppercase, digits and a special character.
 def character_categories(password: str) -> bool:
     l = False
     u = False
@@ -32,16 +30,16 @@ def character_categories(password: str) -> bool:
 
         
 
-
+# checks if password contains a year of birth between 1920 to 2020
+# For example: if password = 'xyG1989' the function returns True because password contains the substring: '1989'
 def year_of_birth(password: str) -> bool:
     birthyears = [str(i) for i in range(1920,2021)]
     return not any(i in password for i in birthyears)
   
         
 
-
-
-
+# checks if the password does NOT contain a substring of length 3 containing consecutive letters or digits
+# For example: if password = '123ADE083xyzf@' then the function returns False because there password contains the substrings: '123' and 'xyz'
 def consecutive_increasing_substring(password: str) -> bool:
     for i in range(0,len(password)-2):
         substring = password[i:i+2]
@@ -51,6 +49,8 @@ def consecutive_increasing_substring(password: str) -> bool:
             return False
     return True
 
+# checks if the password only contains unique substring of length 3
+# For example: if password = 'abcH837abc@J7' then the function returns False because there password contains the substrings: 'abc' twice.
 def unique_substrings(password: str) -> bool:
     for i in range(0,len(password)-2):
         substring = password[i:i+2]
@@ -62,7 +62,7 @@ def unique_substrings(password: str) -> bool:
 
         
 
-
+# find a strong password with the shortest length within another password
 def shortest_strong_substring(password: str) -> str:
     if(length_check(password)):
         n = 10
